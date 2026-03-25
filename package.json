@@ -1,0 +1,21 @@
+{
+  "name": "discord-news-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that posts latest AI, LLM, Tech, and Open Source news",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.28.4",
+    "discord.js": "^13.17.1",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3",
+    "rss-parser": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
