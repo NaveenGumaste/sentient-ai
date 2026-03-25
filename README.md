@@ -1,6 +1,6 @@
 # Discord News Bot
 
-A Discord bot that automatically fetches and posts the latest news on AI, LLMs, Tech, and Open Source to your Discord channels using RSS feeds. Uses Upstash Redis to prevent duplicate posts.
+A Discord bot that continuously checks RSS feeds and posts the latest news on AI, LLMs, Tech, and Open Source to your Discord channels as soon as it detects them. Uses Upstash Redis to prevent duplicate posts.
 
 ## Features
 
@@ -56,8 +56,9 @@ CHANNEL_OPENSOURCE=1234567890123456789
 # OR use one channel for everything
 CHANNEL_ALL=1234567890123456789
 
-# Cron schedule (default: every 2 hours)
-CRON_SCHEDULE=0 */2 * * *
+# Polling interval in milliseconds (default: 60 seconds)
+# Lower values mean faster checks, but more feed requests
+POLL_INTERVAL_MS=60000
 ```
 
 ### 5. Install & Run
@@ -73,15 +74,11 @@ npm start
 npm run dev
 ```
 
-## Cron Schedule Examples
+## Polling Behavior
 
-| Schedule | Description |
-|----------|-------------|
-| `0 */2 * * *` | Every 2 hours (default) |
-| `0 */1 * * *` | Every hour |
-| `0 9,18 * * *` | At 9 AM and 6 PM |
-| `0 */6 * * *` | Every 6 hours |
-| `*/30 * * * *` | Every 30 minutes |
+The bot does not use cron or fixed posting times anymore. Instead, it runs a continuous loop that checks each feed on a short interval and posts any new item it finds immediately after the next poll.
+
+If you want faster updates, lower `POLL_INTERVAL_MS` in `.env`. The default is 60 seconds.
 
 ## Customization
 

@@ -12,7 +12,6 @@
     "@upstash/redis": "^1.28.4",
     "discord.js": "^13.17.1",
     "dotenv": "^16.4.5",
-    "node-cron": "^3.0.3",
     "rss-parser": "^3.13.0"
   },
   "engines": {
