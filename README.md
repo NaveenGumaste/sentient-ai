@@ -1,6 +1,6 @@
 # Discord News Bot
 
-A Discord bot that continuously checks RSS feeds and posts the latest news on AI, LLMs, Tech, and Open Source to your Discord channels as soon as it detects them. Uses Upstash Redis to prevent duplicate posts.
+A Discord bot that continuously checks RSS feeds and trading/news sources and posts the latest updates on AI, LLMs, Tech, Open Source, and Indian market news to your Discord channels as soon as it detects them. Uses Upstash Redis to prevent duplicate posts.
 
 ## Features
 
@@ -9,6 +9,8 @@ A Discord bot that continuously checks RSS feeds and posts the latest news on AI
 - 💻 **Tech News** - HackerNews, TechCrunch, The Verge, Ars Technica
 - 🌐 **Open Source** - OpenSource.com, GitHub Blog
 - 📈 **Moneycontrol Market Updates** - section-page scraping for Small Cap, Bank, and Oil & Gas topics
+
+> This branch (`dev`) contains the trading/Moneycontrol work. The `main` branch keeps the stable core RSS bot.
 
 ## Setup
 
@@ -35,6 +37,7 @@ A Discord bot that continuously checks RSS feeds and posts the latest news on AI
 
 1. In Discord, enable Developer Mode (User Settings > App Settings > Advanced)
 2. Right-click on your target channel(s) and click "Copy ID"
+3. For trading updates, add a separate Moneycontrol channel and set `CHANNEL_MONEYCONTROL`
 
 ### 4. Configure Environment
 
@@ -149,6 +152,11 @@ Active production trading stack for the `moneycontrol` category includes:
 Note: the previously shared LiveMint RSS endpoints (`/rss/marketsRSS`, `/rss/companiesRSS`, `/rss/industryRSS`) currently return 404 in runtime checks, so they are not enabled by default.
 
 When a story does not include enough quote-like data, price fields are shown as `N/A` and the signal defaults to 🟠.
+
+### Branch Usage
+
+- `main`: stable bot for the core RSS categories
+- `dev`: active trading/Moneycontrol branch with market-style embeds and extra source fallbacks
 
 ## Deployment
 
