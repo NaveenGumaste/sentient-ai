@@ -8,7 +8,7 @@ A Discord bot that continuously checks RSS feeds and posts the latest news on AI
 
 - 🤖 **AI News** - MIT AI News, VentureBeat AI, AI News
 - 🧠 **LLM/ML News** - HuggingFace, OpenAI Blog, MarkTechPost
-- 💻 **Tech News** - HackerNews, TechCrunch, The Verge, Ars Technica  
+- 💻 **Tech News** - HackerNews, TechCrunch, The Verge, Ars Technica
 - 🌐 **Open Source** - OpenSource.com, GitHub Blog
 
 ## Setup
@@ -91,13 +91,13 @@ Edit `src/config/feeds.js` to add or modify feed sources:
 ```javascript
 export const NEWS_FEEDS = {
   ai: {
-    name: 'AI News',
-    emoji: '🤖',
+    name: "AI News",
+    emoji: "🤖",
     color: 0x7289da,
     feeds: [
-      'https://your-new-feed-url.com/rss',
+      "https://your-new-feed-url.com/rss",
       // Add more feeds here
-    ]
+    ],
   },
   // Add new categories...
 };
@@ -106,6 +106,7 @@ export const NEWS_FEEDS = {
 ### Adjust Article Limits
 
 In `src/config/feeds.js`:
+
 - `MAX_ARTICLES_PER_FETCH`: How many articles per category per run
 - `REDIS_EXPIRY_DAYS`: How long to remember posted articles
 
