@@ -2,6 +2,8 @@
 
 A Discord bot that continuously checks RSS feeds and posts the latest news on AI, LLMs, Tech, and Open Source to your Discord channels as soon as it detects them. Uses Upstash Redis to prevent duplicate posts.
 
+> This is the stable `main` branch. The experimental trading/Moneycontrol work lives on `dev`.
+
 ## Features
 
 - 🤖 **AI News** - MIT AI News, VentureBeat AI, AI News
@@ -106,6 +108,11 @@ export const NEWS_FEEDS = {
 In `src/config/feeds.js`:
 - `MAX_ARTICLES_PER_FETCH`: How many articles per category per run
 - `REDIS_EXPIRY_DAYS`: How long to remember posted articles
+
+### Branch Notes
+
+- `main`: stable core RSS bot for AI, LLM, Tech, and Open Source
+- `dev`: trading/Moneycontrol branch with market-style embeds and extra feed fallbacks
 
 ## Deployment
 
