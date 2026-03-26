@@ -6,9 +6,8 @@ A Discord bot that continuously checks RSS feeds and posts the latest news on AI
 
 - 🤖 **AI News** - MIT AI News, VentureBeat AI, AI News
 - 🧠 **LLM/ML News** - HuggingFace, OpenAI Blog, MarkTechPost
-- 💻 **Tech News** - HackerNews, TechCrunch, The Verge, Ars Technica
+- 💻 **Tech News** - HackerNews, TechCrunch, The Verge, Ars Technica  
 - 🌐 **Open Source** - OpenSource.com, GitHub Blog
-- 📈 **Moneycontrol Market Updates** - section-page scraping for Small Cap, Bank, and Oil & Gas topics
 
 ## Setup
 
@@ -53,15 +52,9 @@ CHANNEL_AI=1234567890123456789
 CHANNEL_LLM=1234567890123456789
 CHANNEL_TECH=1234567890123456789
 CHANNEL_OPENSOURCE=1234567890123456789
-CHANNEL_MONEYCONTROL=1234567890123456789
 
 # OR use one channel for everything
 CHANNEL_ALL=1234567890123456789
-
-# Optional: override default Moneycontrol topic URLs (comma-separated)
-# MONEYCONTROL_SECTION_URLS=https://www.moneycontrol.com/news/tags/small-cap.html,https://www.moneycontrol.com/news/tags/bank-stocks.html,https://www.moneycontrol.com/news/tags/oil-and-gas.html
-# Optional: override Moneycontrol article count per poll (1-50)
-# MONEYCONTROL_MAX_ARTICLES_PER_FETCH=12
 
 # Polling interval in milliseconds (default: 60 seconds)
 # Lower values mean faster checks, but more feed requests
@@ -96,13 +89,13 @@ Edit `src/config/feeds.js` to add or modify feed sources:
 ```javascript
 export const NEWS_FEEDS = {
   ai: {
-    name: "AI News",
-    emoji: "🤖",
+    name: 'AI News',
+    emoji: '🤖',
     color: 0x7289da,
     feeds: [
-      "https://your-new-feed-url.com/rss",
+      'https://your-new-feed-url.com/rss',
       // Add more feeds here
-    ],
+    ]
   },
   // Add new categories...
 };
@@ -111,44 +104,8 @@ export const NEWS_FEEDS = {
 ### Adjust Article Limits
 
 In `src/config/feeds.js`:
-
 - `MAX_ARTICLES_PER_FETCH`: How many articles per category per run
 - `REDIS_EXPIRY_DAYS`: How long to remember posted articles
-
-### Moneycontrol Price Embed
-
-Moneycontrol posts use a market-style embed layout with:
-
-- Title
-- Subtitle (story summary)
-- Previous Day Price
-- Current Day Price
-- Next Day Predicted Price
-
-Color signal is based on **predicted vs current**:
-
-- 🟢 Green: predicted price is higher (profit expectation)
-- 🔴 Red: predicted price is lower (loss expectation)
-- 🟠 Orange: predicted price is unchanged or unavailable
-
-If a Moneycontrol item has no image, it can still be posted as a text-first embed.
-
-By default, the bot uses Google News RSS queries scoped to `site:moneycontrol.com` for stability.
-
-If you explicitly set `MONEYCONTROL_SECTION_URLS`, the bot will attempt direct Moneycontrol scraping; some regions/IPs may receive HTTP 403 from those pages.
-
-When Moneycontrol updates come from Google RSS links, the bot now enriches each item using page metadata (`og:image`, `twitter:image`) so thumbnails are included whenever available.
-
-Active production trading stack for the `moneycontrol` category includes:
-
-- Moneycontrol (via Google News RSS query fallbacks)
-- Economic Times markets/banking/energy RSS
-- Investing.com India RSS
-- Business Standard markets/banking/commodities RSS
-
-Note: the previously shared LiveMint RSS endpoints (`/rss/marketsRSS`, `/rss/companiesRSS`, `/rss/industryRSS`) currently return 404 in runtime checks, so they are not enabled by default.
-
-When a story does not include enough quote-like data, price fields are shown as `N/A` and the signal defaults to 🟠.
 
 ## Deployment
 
